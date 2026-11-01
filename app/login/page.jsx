@@ -2,14 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Shield, Sparkles, UserCheck, KeyRound, ArrowRight, AlertCircle, Award } from 'lucide-react';
-
-const PRESET_ACCOUNTS = [
-  { username: 'judge1', name: 'Judge 1', pin: '1001', pass: 'judge1@hack2026', role: 'Judge' },
-  { username: 'judge2', name: 'Judge 2', pin: '1002', pass: 'judge2@hack2026', role: 'Judge' },
-  { username: 'judge3', name: 'Judge 3', pin: '1003', pass: 'judge3@hack2026', role: 'Judge' },
-  { username: 'admin', name: 'Admin Lead', pin: '9999', pass: 'admin@hack2026', role: 'Admin' },
-];
+import { UserCheck, KeyRound, ArrowRight, AlertCircle, Award } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -18,12 +11,10 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  async function handleLogin(e, customId, customSecret) {
+  async function handleLogin(e) {
     if (e) e.preventDefault();
-    const idToUse = customId || identifier;
-    const secretToUse = customSecret || secret;
 
-    if (!idToUse.trim()) {
+    if (!identifier.trim()) {
       setError('Please enter your username or PIN.');
       return;
     }
@@ -35,7 +26,7 @@ export default function LoginPage() {
       const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: idToUse, secret: secretToUse }),
+        body: JSON.stringify({ identifier: identifier.trim(), secret: secret.trim() }),
       });
 
       const data = await res.json();
@@ -54,12 +45,6 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
-  }
-
-  function applyPreset(preset) {
-    setIdentifier(preset.username);
-    setSecret(preset.pass);
-    handleLogin(null, preset.username, preset.pass);
   }
 
   return (
@@ -123,7 +108,7 @@ export default function LoginPage() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. judge1, judge2, judge3 or 1001"
+                    placeholder="Enter your username or PIN"
                     value={identifier}
                     onChange={(e) => setIdentifier(e.target.value)}
                     className="w-full bg-[#16141f] border border-white/10 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-[#ff7a1a] focus:ring-1 focus:ring-[#ff7a1a]/30 transition-all font-mono"
@@ -133,12 +118,9 @@ export default function LoginPage() {
               </div>
 
               <div>
-                <div className="flex items-center justify-between mb-1.5">
-                  <label className="block text-xs font-bold uppercase tracking-wider text-neutral-300">
-                    Password or PIN
-                  </label>
-                  <span className="text-[10px] text-neutral-500 font-mono">judge1@hack2026 or PIN</span>
-                </div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-300 mb-1.5">
+                  Password or PIN
+                </label>
                 <div className="relative">
                   <input
                     type="password"
@@ -166,43 +148,10 @@ export default function LoginPage() {
                 )}
               </button>
             </form>
-
-            {/* Quick Login Presets */}
-            <div className="mt-6 pt-5 border-t border-white/10 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-[11px] font-bold text-neutral-400 uppercase tracking-wider">
-                  Quick Access (3 Judges & Admin)
-                </span>
-                <span className="text-[10px] text-neutral-500">Tap to auto-sign in</span>
-              </div>
-
-              <div className="grid grid-cols-2 gap-2">
-                {PRESET_ACCOUNTS.map((preset) => (
-                  <button
-                    key={preset.username}
-                    type="button"
-                    onClick={() => applyPreset(preset)}
-                    className="p-2.5 rounded-xl bg-[#14121c] hover:bg-[#1a1726] border border-white/5 hover:border-[#ff7a1a]/40 text-left transition-all group"
-                  >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-xs font-bold text-white group-hover:text-[#ff7a1a]">
-                        {preset.name}
-                      </span>
-                      <span className="text-[9px] px-1.5 py-0.2 rounded bg-white/5 text-neutral-400 font-mono">
-                        PIN: {preset.pin}
-                      </span>
-                    </div>
-                    <div className="text-[10px] text-neutral-500 font-mono">
-                      User: <strong className="text-neutral-400">{preset.username}</strong>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
           <div className="text-center text-[11px] text-neutral-500 font-mono">
-            Top 10 Finalist Evaluation • 5 Parameters • Max 50 pts (10 pts each)
+            Top 10 Finalist Evaluation • 5 Parameters • Max 50 pts
           </div>
         </div>
       </main>
@@ -214,4 +163,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
