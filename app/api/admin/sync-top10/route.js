@@ -93,3 +93,4 @@ export async function POST() {
     return NextResponse.json({ error: err.message || 'Failed to sync top 10' }, { status: 500 });
   }
 }
+

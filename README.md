@@ -63,16 +63,16 @@ $$\text{Total Score} = \text{P1} + \text{P2} + \text{P3} + \text{P4} + \text{P5}
 ## 4. Top 10 Finalist Teams
 
 Automatically seeded from the live Hack-O-Lantern leaderboard standings:
-1. **VHK-1082** — Monarch (Track 3)
-2. **VHK-1074** — CodeTitans (Track 3)
-3. **VHK-1017** — PromptOPS (Track 2)
-4. **VHK-1075** — BAAPUJI (Track 5)
-5. **VHK-1076** — Khatarnaak coders (Track 3)
-6. **VHK-1063** — ByteCode (Track 3)
-7. **VHK-1019** — Pleasure n Punishment (Track 2)
-8. **VHK-1033** — COVEN (Track 5)
-9. **VHK-1038** — Code Nomads (Track 1)
-10. **VHK-1012** — Catalyst (Track 1)
+1. **VHK-1074** — CodeTitans (Track 3) · 23.83 pts
+2. **VHK-1082** — Monarch (Track 3) · 23.66 pts
+3. **VHK-1017** — PromptOPS (Track 2) · 22.24 pts
+4. **VHK-1075** — BAAPUJI (Track 5) · 21.59 pts
+5. **VHK-1063** — ByteCode (Track 3) · 20.83 pts
+6. **VHK-1076** — Khatarnaak coders (Track 3) · 19.75 pts
+7. **VHK-1020** — 2witch1glitch (Track 1) · 19.58 pts
+8. **VHK-1012** — Catalyst (Track 1) · 19.24 pts
+9. **VHK-1054** — Nightmare.exe (Track 1) · 18.33 pts
+10. **VHK-1062** — 404: Souls Not Found (Track 4) · 17.74 pts
 
 ---
 
@@ -82,3 +82,4 @@ Automatically seeded from the live Hack-O-Lantern leaderboard standings:
 - **Combined Ranking**: Live sorted rankings based on the average of all 3 judges.
 - **Detailed Parameter Breakdown**: Expand any team to view individual criteria ratings and remarks from each judge.
 - **CSV Export**: One-click download of the complete final results for prize distribution.
+
